@@ -1,5 +1,5 @@
-const path = require("path");
 const express = require("express");
+const path = require("path");
 const app = express();
 const connectDB = require("./config/db.js");
 const router = require("./Router.js");
@@ -15,10 +15,12 @@ const port = process.env.PORT || 4000;
 
 app.use("/", router);
 
-if (process.env.NODE_ENV === "development") {
-  app.use("/", express.static(path.join(__dirname, "/share-it-app/build")));
+if (process.env.NODE_ENV === "production") {
+  const path = require("path");
 
-  app.get("*", (req, res, next) =>
+  app.use(express.static("../share-it-app/build"));
+
+  app.get("*", (req, res) =>
     res.sendFile(path.resolve(__dirname, "share-it-app", "build", "index.html"))
   );
 } else {
