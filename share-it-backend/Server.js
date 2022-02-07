@@ -13,10 +13,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", router);
 
 if (process.env.NODE_ENV === "production") {
-  app.use("/", express.static(path.join(__dirname, "../share-it-app/build")));
+  app.use(express.static(path.join(__dirname, "../share-it-app/build")));
 
   app.get("*", (req, res, next) =>
-    res.sendFile(path.resolve(__dirname, "share-it-app", "build", "index.html"))
+    res.sendFile(path.join(__dirname, "share-it-app", "build", "index.html"))
   );
 } else {
   app.get("/", (req, res, next) => {
