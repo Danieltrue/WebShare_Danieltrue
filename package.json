@@ -11,7 +11,7 @@
     "dev": "concurrently \" npm run server \" \" npm run client\" ",
     "install-clint": "cd share-it-app && npm install",
     "inserver": "cd share-it-backend && npm install",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix share-it-app  && npm run build --prefix share-it-app",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix share-it-app  && npm run build --prefix share-it-app && npm run inserver",
     "h000": "NPM_CONFIG_PRODUCTION=false npm run inserver && npm run install-client && npm run build"
   },
   "repository": {

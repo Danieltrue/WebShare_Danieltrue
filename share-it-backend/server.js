@@ -10,10 +10,13 @@ const dotenv = require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//Setting port
+const port = process.env.PORT || 4000;
+
 app.use("/", router);
 
 if (process.env.NODE_ENV === "production") {
-  app.use("/", express.static(path.join(__dirname, "../share-it-app/build")));
+  app.use("/", express.static(path.join(__dirname, "/share-it-app/build")));
 
   app.get("*", (req, res, next) =>
     res.sendFile(path.resolve(__dirname, "share-it-app", "build", "index.html"))
@@ -24,9 +27,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 connectDB();
-
-//Setting port
-const port = process.env.PORT || 5000;
 
 //Listening to port
 app.listen(port, () => console.log(`Server Running at port ${port}`));
