@@ -1,0 +1,33 @@
+{
+  "name": "Share-it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "share-it-backend/Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node share-it-backend/Server.js",
+    "server": "nodemon share-it-backend/Server.js",
+    "client": "npm start --prefix share-it-app",
+    "dev": "concurrently \" npm run server \" \" npm run client\" ",
+    "install-clint": "cd share-it-app && npm install",
+    "inserver": "cd share-it-backend && npm install",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run inserver && npm run install-client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BothOfUs/WebShare_Danieltrue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BothOfUs/WebShare_Danieltrue/issues"
+  },
+  "homepage": "https://github.com/BothOfUs/WebShare_Danieltrue#readme",
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
