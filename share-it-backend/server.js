@@ -15,7 +15,7 @@ const port = process.env.PORT || 4000;
 
 app.use("/", router);
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "development") {
   app.use("/", express.static(path.join(__dirname, "/share-it-app/build")));
 
   app.get("*", (req, res, next) =>
