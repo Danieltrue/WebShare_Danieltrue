@@ -16,6 +16,8 @@ connectDB();
 app.use("/", router);
 
 if (process.env.NODE_ENV === "production") {
+  require("dotenv").config();
+
   app.use(express.static(path.join(__dirname, "/share-it-app/build")));
 
   app.get("*", (req, res, next) =>
