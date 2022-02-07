@@ -18,11 +18,11 @@ app.use("/", router);
 if (process.env.NODE_ENV === "production") {
   const path = require("path");
 
-  app.use(express.static("../share-it-app/build"));
+  app.use(express.static(path.join(__dirname, "../share-it-app/build")));
 
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "share-it-app", "build", "index.html"))
-  );
+  app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
 } else {
   app.get("/", (req, res, next) => {
     res.send("App is Running....");
