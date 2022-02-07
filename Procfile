@@ -1,1 +1,1 @@
-web: node share-it-backend/Server.js
+web: node share-it-backend/server.js
